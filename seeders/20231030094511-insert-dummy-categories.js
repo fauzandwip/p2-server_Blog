@@ -3,17 +3,16 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    const admins = require('../data/admins')
+    const categories = require('../data/categories')
       .map((data) => {
-        data.role = 'admin';
         data.createdAt = data.updatedAt = new Date();
         return data
       });
     
-    await queryInterface.bulkInsert('Users', admins);
+    await queryInterface.bulkInsert('Categories', categories);
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('Users', null, {});
+    await queryInterface.bulkDelete('Categories', null, {});
   }
 };

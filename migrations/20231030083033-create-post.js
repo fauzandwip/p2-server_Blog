@@ -20,7 +20,7 @@ module.exports = {
       imgUrl: {
         type: Sequelize.STRING
       },
-      categoryId: {
+      CategoryId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -28,7 +28,7 @@ module.exports = {
           key: 'id'
         }
       },
-      userId: {
+      UserId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
