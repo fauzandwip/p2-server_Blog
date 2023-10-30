@@ -1,6 +1,6 @@
 # P2-Challenge-1 (Server Side)
 
-- Tema Aplikasi: ...
+- Tema Aplikasi: Blog Website
 
 Struktur Folder:
 
