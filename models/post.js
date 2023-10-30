@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Post.belongsTo(models.Author);
+      Post.belongsTo(models.User);
       Post.belongsTo(models.Category);
     }
   }
@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     content: DataTypes.STRING,
     imgUrl: DataTypes.STRING,
     categoryId: DataTypes.INTEGER,
-    authorId: DataTypes.INTEGER
+    userId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Post',

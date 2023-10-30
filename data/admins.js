@@ -1,0 +1,18 @@
+module.exports = [
+  {
+    "email": "admin1@gmail.com",
+    "password": 12345
+  },
+  {
+    "email": "admin2@gmail.com",
+    "password": 12345
+  },
+  {
+    "email": "admin3@gmail.com",
+    "password": 12345
+  },
+  {
+    "email": "admin4@gmail.com",
+    "password": 12345
+  }
+]
