@@ -19,16 +19,16 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        notNull: { msg: 'Title is required'},
-        notEmpty: { msg: 'Title is required'}
+        notNull: { msg: 'Title is required' },
+        notEmpty: { msg: 'Title is required' }
       }
     },
     content: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        notNull: { msg: 'Content is required'},
-        notEmpty: { msg: 'Content is required'}
+        notNull: { msg: 'Content is required' },
+        notEmpty: { msg: 'Content is required' }
       }
     },
     imgUrl: DataTypes.STRING,
@@ -36,16 +36,16 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-        notNull: { msg: 'Category is required'},
-        notEmpty: { msg: 'Category is required'}
+        notNull: { msg: 'Category is required' },
+        notEmpty: { msg: 'Category is required' }
       }
     },
     UserId:  {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-        notNull: { msg: 'User Id is required'},
-        notEmpty: { msg: 'User Id is required'}
+        notNull: { msg: 'User Id is required' },
+        notEmpty: { msg: 'User Id is required' }
       }
     }
   }, {
