@@ -2,12 +2,12 @@
 
 const express = require('express');
 const AuthController = require('../controllers/AuthController');
-const authentication = require('../middlewares/authentication');
+const { authentication, guardAdminOnly } = require('../middlewares');
 const router = express.Router();
 
-router.get('/', (req, res) => res.send('test'));
 // auth
-router.post('/add-user', AuthController.addUser);
+// prettier-ignore
+router.post('/add-user', authentication, guardAdminOnly, AuthController.addUser);
 router.post('/login', AuthController.login);
 
 router.use('/posts', authentication, require('./posts'));

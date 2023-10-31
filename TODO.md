@@ -13,21 +13,25 @@ Target:
 ### **REST API**
 
 - [x] Membuat entitas utama (Create / POST)
+
   - [x] Endpoint ini akan menerima request body berdasar field-field di entitas utama sesuai [tema aplikasi](https://docs.google.com/document/d/1GZwh8OJGZZQVUuWE0Cr13iMA2lLNE9mMoHfrbmETEBs/edit#heading=h.mcqrsbt2auhv).
-  - [x] Jika request  berhasil, kembalikan response dengan 201 status code dan response body berupa object yang berisikan data baru yang berhasil di-input.
+  - [x] Jika request berhasil, kembalikan response dengan 201 status code dan response body berupa object yang berisikan data baru yang berhasil di-input.
   - [x] Jika request gagal karena validasi tidak terpenuhi, kembalikan response dengan 400 status code dan response body berupa object yang berisikan validation errors.
   - [x] Jika request gagal karena kesalahan server, kembalikan response dengan 500 status code.
 
 - [x] Mengambil semua data entitas utama (Read / GET)
+
   - [x] Jika request berhasil, kembalikan response dengan 200 status code dan response body berupa array of objects yang berisikan semua data entitas utama include User sebagai pemilik data (tanpa menampilkan passwordnya).
   - [x] Jika request gagal, kembalikan response dengan 500 status code.
 
-- [x]  Mengambil detail entitas utama berdasar id (Read / GET)
+- [x] Mengambil detail entitas utama berdasar id (Read / GET)
+
   - [x] Id dikirimkan via request params
   - [x] Jika request berhasil, kembalikan response dengan 200 status code dan response body berupa object yang berisikan data todo.
   - [x] Jika request gagal karena todo tidak ditemukan, kembalikan response dengan 404 status code dan response body berupa object yang berisikan error not found.
 
 - [x] Mengupdate entitas utama (Update/ PUT)
+
   - [x] Endpoint ini akan menerima request body berdasar field-field di entitas utama.
   - [x] Id dikirimkan via request params
   - [x] Jika request berhasil, kembalikan response dengan 200 status code dan response body berupa object yang berisikan data yang diupdate.
@@ -36,22 +40,26 @@ Target:
   - [x] Jika request gagal karena kesalahan server, kembalikan response dengan 500 status code.
 
 - [x] Menghapus entitas utama (Delete / DELETE)
+
   - [x] Id dikirimkan via request params
   - [x] Jika request berhasil, kembalikan response dengan 200 status code dan response berupa object yang berisikan data yang berhasil di-delete atau bisa juga mengembalikan data message saja message: '[entity name] success to delete'
   - [x] Jika request gagal karena todo tidak ditemukan, kembalikan response dengan 404 status code dan response body berupa object yang berisikan error not found
   - [x] Jika request gagal karena kesalahan server, kembalikan response dengan 500 status code.
 
 - [x] Membuat entitas kedua genres/categories/types (Create / POST)
+
   - [x] Endpoint ini akan menerima request body berdasar field-field di entitas kedua sesuai [tema aplikasi](https://docs.google.com/document/d/1GZwh8OJGZZQVUuWE0Cr13iMA2lLNE9mMoHfrbmETEBs/edit#heading=h.mcqrsbt2auhv).
-  - [x] Jika request  berhasil, kembalikan response dengan 201 status code dan response body berupa object yang berisikan data baru yang berhasil di-input.
+  - [x] Jika request berhasil, kembalikan response dengan 201 status code dan response body berupa object yang berisikan data baru yang berhasil di-input.
   - [x] Jika request gagal karena validasi tidak terpenuhi, kembalikan response dengan 400 status code dan response body berupa object yang berisikan validation errors.
   - [x] Jika request gagal karena kesalahan server, kembalikan response dengan 500 status code.
 
 - [x] Mengambil semua data genres/categories/types (Read / GET)
+
   - [x] Jika request berhasil, kembalikan response dengan 200 status code dan response body berupa array of objects yang berisikan semua data genres/categories/types.
   - [x] Jika request gagal, kembalikan response dengan 500 status code.
 
 - [x] Mengupdate kedua genres/categories/types (Update/ PUT)
+
   - [x] Endpoint ini akan menerima request body berdasar field-field di entitas kedua genres/categories/types.
   - [x] Id dikirimkan via request params
   - [x] Jika request berhasil, kembalikan response dengan 200 status code dan response body berupa object yang berisikan data yang diupdate.
@@ -60,12 +68,14 @@ Target:
   - [x] Jika request gagal karena kesalahan server, kembalikan response dengan 500 status code.
 
 - [x] Menghapus entitas kedua genres/categories/types (Delete / DELETE)
+
   - [x] Id dikirimkan via request params
   - [x] Jika request berhasil, kembalikan response dengan 200 status code dan response berupa object yang berisikan data yang berhasil di-delete atau bisa juga mengembalikan data message saja message: '[entity name] success to delete'
   - [x] Jika request gagal karena todo tidak ditemukan, kembalikan response dengan 404 status code dan response body berupa object yang berisikan error not found
   - [x] Jika request gagal karena kesalahan server, kembalikan response dengan 500 status code.
 
 - [x] Mengambil semua data entitas utama (Read / GET) untuk public site
+
   - [x] Tambahkan prefix /pub pada endpoint ini
   - [x] Jika request berhasil, kembalikan response dengan 200 status code dan response body berupa array of objects yang berisikan semua data entitas utama.
   - [x] Jika request gagal, kembalikan response dengan 500 status code.
@@ -92,30 +102,32 @@ Target:
 
 ### **Authentication + Authorization**
 
-- [ ] POST /add-user (khusus untuk staff, dilakukan oleh admin)
-  - [ ] Request Headers: { Authorization: "Bearer [your access token]" }
-  - [ ] Request body: { email, password }
-  - [ ] Response:
-    - [ ] 201: { id, email }
-    - [ ] 400: { errors }
+- [x] POST /add-user (khusus untuk staff, dilakukan oleh admin)
+
+  - [x] Request Headers: { Authorization: "Bearer [your access token]" }
+  - [x] Request body: { email, password }
+  - [x] Response:
+    - [x] 201: { id, email }
+    - [x] 400: { errors }
 
   Note: Pastikan password telah terhash sebelum data user masuk ke dalam database.
 
-- [ ] POST /login (semua role, baik admin atau staff)
-  - [ ] Request body: { email, password }
-  - [ ] Response:
-    - [ ] 200: { access_token, email/username, role }
+- [x] POST /login (semua role, baik admin atau staff)
+
+  - [x] Request body: { email, password }
+  - [x] Response:
+    - [x] 200: { access_token, email/username, role }
     - [ ] 401: { error invalid username or email or password }
 
-- [ ] Menambahkan Authentication dan Authorization
+- [x] Menambahkan Authentication dan Authorization
 
-| Role  | Create | Read  | Update                             | Delete                             |
-| ----- | ------ | ----- | ---------------------------------- | ---------------------------------- |
-| Admin | [ ] ✅  | [ ] ✅ | [ ] ✅                              | [ ] ✅                              |
-| Staff | [ ]  ✅ | [ ] ✅ | [ ] Hanya bisa menghapus miliknya. | [ ] Hanya bisa menghapus miliknya. |
+| Role  | Create | Read   | Update                             | Delete                             |
+| ----- | ------ | ------ | ---------------------------------- | ---------------------------------- |
+| Admin | [ ] ✅ | [ ] ✅ | [ ] ✅                             | [ ] ✅                             |
+| Staff | [ ] ✅ | [ ] ✅ | [ ] Hanya bisa menghapus miliknya. | [ ] Hanya bisa menghapus miliknya. |
 
-- [ ] Error status code 401, apabila user yang belum login, atau yang mempunyai token yang salah mencoba mengakses endpoint CRD.
-- [ ] Error status code 403, apabila staff mengakses delete pada entitas yang bukan miliknya.
+- [x] Error status code 401, apabila user yang belum login, atau yang mempunyai token yang salah mencoba mengakses endpoint CRD.
+- [x] Error status code 403, apabila staff mengakses delete pada entitas yang bukan miliknya.
 
   Note: Untuk mengirim access_token, gunakan request header (diterima sebagai req.headers di Express).
 
@@ -123,7 +135,7 @@ Target:
 
 - [x] 401 - Error login user not found atau password not matched
 - [x] 401 - Error authentication
-- [ ] 403 - Forbidden error di authorization
+- [x] 403 - Forbidden error di authorization
 - [x] 400 - Error validation saat create.
 - [x] 404 - Data not found.
 - [x] 500 - Internal error server, dsb
@@ -148,6 +160,7 @@ Target:
 Mengimplementasikan testing terhadap endpoint yang sudah dibuat
 
 - [ ] Login (Admin), perlu melakukan pengecekan pada status dan response ketika:
+
   - [ ] Email tidak diberikan / tidak diinput
   - [ ] Password tidak diberikan / tidak diinput
   - [ ] Email diberikan invalid / tidak terdaftar
@@ -155,6 +168,7 @@ Mengimplementasikan testing terhadap endpoint yang sudah dibuat
   - Pastikan untuk testing ini sediakan dulu data Admin
 
 - [ ] Add Staff, perlu melakukan pengecekan pada status dan response ketika:
+
   - [ ] Berhasil register
   - [ ] Email tidak diberikan / tidak diinput
   - [ ] Password tidak diberikan / tidak diinput
@@ -166,24 +180,28 @@ Mengimplementasikan testing terhadap endpoint yang sudah dibuat
   - [ ] Gagal register staff karena token yang diberikan tidak valid (random string)
 
 - [ ] Create, perlu melakukan pengecekan pada status dan response ketika:
+
   - [ ] Berhasil membuat entitas utama
   - [ ] Gagal menjalankan fitur karena belum login
-  - [ ] Gagal menjalankan fitur karena token yang diberikan tidak valid  
+  - [ ] Gagal menjalankan fitur karena token yang diberikan tidak valid
   - [ ] Gagal ketika request body tidak sesuai (validation required)
   - Buatlah testing untuk masing-masing fitur
 
 - [ ] Read, perlu melakukan pengecekan pada status dan response ketika:
+
   - [ ] Berhasil mendapatkan data Entitas Utama
   - [ ] Gagal menjalankan fitur karena belum login
   - [ ] Gagal menjalankan fitur karena token yang diberikan tidak valid
 
 - [ ] Read Detail, perlu melakukan pengecekan pada status dan response ketika:
-  - [ ] Berhasil mendapatkan 1  Entitas Utama sesuai dengan params id yang diberikan
+
+  - [ ] Berhasil mendapatkan 1 Entitas Utama sesuai dengan params id yang diberikan
   - [ ] Gagal menjalankan fitur karena belum login
   - [ ] Gagal menjalankan fitur karena token yang diberikan tidak valid
   - [ ] Gagal mendapatkan Entitas Utama karena params id yang diberikan tidak ada di database / invalid
 
 - [ ] Update PUT, perlu melakukan pengecekan pada status dan response ketika:
+
   - [ ] Berhasil mengupdate data Entitas Utama berdasarkan params id yang diberikan
   - [ ] Gagal menjalankan fitur karena belum login
   - [ ] Gagal menjalankan fitur karena token yang diberikan tidak valid
@@ -192,6 +210,7 @@ Mengimplementasikan testing terhadap endpoint yang sudah dibuat
   - [ ] Gagal ketika request body yang diberikan tidak sesuai
 
 - [ ] Delete, perlu melakukan pengecekan pada status dan response ketika:
+
   - [ ] Berhasil menghapus data Entitas Utama berdasarkan params id yang diberikan
   - [ ] Gagal menjalankan fitur karena belum login
   - [ ] Gagal menjalankan fitur karena token yang diberikan tidak valid
@@ -199,6 +218,7 @@ Mengimplementasikan testing terhadap endpoint yang sudah dibuat
   - [ ] Gagal menjalankan fitur ketika Staff menghapus entity yang bukan miliknya
 
 - [ ] Update PATCH, perlu melakukan pengecekan pada status dan response ketika:
+
   - [ ] Berhasil mengupdate imgUrl Entitas Utama berdasarkan params id yang diberikan
   - [ ] Gagal menjalankan fitur karena belum login
   - [ ] Gagal menjalankan fitur karena token yang diberikan tidak valid
@@ -206,19 +226,21 @@ Mengimplementasikan testing terhadap endpoint yang sudah dibuat
   - [ ] Gagal menjalankan fitur ketika Staff mengolah data entity yang bukan miliknya
   - [ ] Gagal ketika request body yang diberikan tidak sesuai
 
-- [ ] Read  Entitas kedua data genres/categories/types  perlu melakukan pengecekan pada status dan response ketika:
+- [ ] Read Entitas kedua data genres/categories/types perlu melakukan pengecekan pada status dan response ketika:
+
   - [ ] Berhasil mendapatkan data entitas kedua
   - [ ] Gagal menjalankan fitur karena belum login
   - [ ] Gagal menjalankan fitur karena token yang diberikan tidak valid
 
-- [ ] Endpoint  List pada public site,  perlu melakukan pengecekan pada status dan response ketika:
+- [ ] Endpoint List pada public site, perlu melakukan pengecekan pada status dan response ketika:
+
   - [ ] Berhasil mendapatkan Entitas Utama tanpa menggunakan query filter parameter
   - [ ] Berhasil mendapatkan Entitas Utama dengan 1 query filter parameter
-  - [ ] Berhasil mendapatkan  Entitas Utama serta panjang yang sesuai ketika memberikan page tertentu (cek pagination-nya)
+  - [ ] Berhasil mendapatkan Entitas Utama serta panjang yang sesuai ketika memberikan page tertentu (cek pagination-nya)
   - Pastikan untuk testing ini sediakan dulu sekitar 20 data untuk diinput di beforeAll, sehingga kita bisa melakukan ekspektasi pada data dan jumlahnya yang kita dapat ketika filter dan pagination
 
-- [ ] Endpoint  Detail pada public site,  perlu melakukan pengecekan pada status dan response ketika:
-  - [ ] Berhasil mendapatkan 1  Entitas Utama sesuai dengan params id yang diberikan
+- [ ] Endpoint Detail pada public site, perlu melakukan pengecekan pada status dan response ketika:
+  - [ ] Berhasil mendapatkan 1 Entitas Utama sesuai dengan params id yang diberikan
   - [ ] Gagal mendapatkan Entitas Utama karena params id yang diberikan tidak ada di database / invalid
 
 ### **Sorting and Pagination, Filter**
