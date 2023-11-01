@@ -3,7 +3,7 @@ const errorHandler = (err, req, res, next) => {
 	switch (err.name) {
 		case 'JsonWebTokenError':
 			status = 401;
-			message = 'Unauthenticated';
+			message = 'Invalid token';
 			break;
 
 		case 'Unauthenticated':
@@ -17,7 +17,6 @@ const errorHandler = (err, req, res, next) => {
 			break;
 
 		case 'SequelizeValidationError':
-		case 'SequelizeUniqueConstraintError':
 			status = 400;
 			messages = err.errors.map((error) => {
 				return error.message;
@@ -32,6 +31,11 @@ const errorHandler = (err, req, res, next) => {
 		case 'NotFound':
 			status = 404;
 			message = err.message;
+			break;
+
+		case 'SequelizeUniqueConstraintError':
+			status = 409;
+			message = err.errors[0].message;
 			break;
 
 		default:

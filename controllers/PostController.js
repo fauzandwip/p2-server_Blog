@@ -97,7 +97,7 @@ module.exports = class PostController {
 			if (!req.file) {
 				throw {
 					name: 'BadRequest',
-					message: 'Image URL is missing',
+					message: 'Image URL is required',
 				};
 			}
 

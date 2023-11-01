@@ -31,14 +31,14 @@ module.exports = class AuthController {
 			if (!email) {
 				throw {
 					name: 'BadRequest',
-					message: 'Email is missing',
+					message: 'Email is required',
 				};
 			}
 
 			if (!password) {
 				throw {
 					name: 'BadRequest',
-					message: 'Password is missing',
+					message: 'Password is required',
 				};
 			}
 

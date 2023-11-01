@@ -8,7 +8,10 @@ const authentication = async (req, res, next) => {
 		const { authorization } = req.headers;
 
 		if (!authorization) {
-			throw { name: 'Unauthenticated' };
+			throw {
+				name: 'Unauthenticated',
+				message: 'Access Token is missing',
+			};
 		}
 
 		const token = authorization.replace('Bearer ', '');
@@ -17,7 +20,10 @@ const authentication = async (req, res, next) => {
 		const user = await User.findByPk(id);
 
 		if (!user) {
-			throw { name: 'Unauthenticated' };
+			throw {
+				name: 'Unauthenticated',
+				message: `User doesn't exists`,
+			};
 		}
 
 		req.user = {

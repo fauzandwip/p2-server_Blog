@@ -41,7 +41,10 @@ const updateDeletePostAuthorization = async (req, res, next) => {
 		}
 
 		if (UserId !== post.UserId) {
-			throw { name: 'Forbidden' };
+			throw {
+				name: 'Forbidden',
+				message: 'Only admins can update/delete post',
+			};
 		}
 
 		next();
@@ -49,35 +52,6 @@ const updateDeletePostAuthorization = async (req, res, next) => {
 		next(error);
 	}
 };
-
-// const updateCategoryAuthorization = async (req, res, next) => {
-// 	try {
-// 		const { id: UserId, role } = req.user;
-// 		const { id } = req.params;
-
-// 		const category = await Category.findByPk(id);
-
-// 		if (!category) {
-// 			throw {
-// 				name: 'NotFound',
-// 				message: `Category with id ${id} is not found`,
-// 			};
-// 		}
-
-// 		if (role === 'admin') {
-// 			next();
-// 			return;
-// 		}
-
-// 		if (UserId !== category.UserId) {
-// 			throw { name: 'Forbidden' };
-// 		}
-
-// 		next();
-// 	} catch (error) {
-// 		next(error);
-// 	}
-// };
 
 module.exports = {
 	guardAdminOnly,
