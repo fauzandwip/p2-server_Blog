@@ -59,8 +59,6 @@ module.exports = class PostController {
 
 	static async updatePost(req, res, next) {
 		try {
-			// update UserId
-			// const { id: UserId } = req.user;
 			const { id } = req.params;
 			const { title, content, imgUrl, CategoryId } = req.body;
 			const post = await Post.findByPk(id);
@@ -85,7 +83,7 @@ module.exports = class PostController {
 
 			await post.destroy();
 			res.status(200).json({
-				message: `Post with id ${id} has been successfully deleted`,
+				message: `Post success to delete`,
 			});
 		} catch (error) {
 			next(error);
@@ -95,6 +93,14 @@ module.exports = class PostController {
 	static async updateImageUrl(req, res, next) {
 		try {
 			const { id } = req.params;
+
+			if (!req.file) {
+				throw {
+					name: 'BadRequest',
+					message: 'Image URL is missing',
+				};
+			}
+
 			const { mimetype, buffer, originalname } = req.file;
 			const post = await Post.findByPk(id);
 
@@ -105,11 +111,13 @@ module.exports = class PostController {
 				public_id: `${originalname}_${randomUUID()}`,
 			});
 
-			const updatedPost = await post.update({
+			await post.update({
 				imgUrl: data.secure_url,
 			});
 
-			res.status(200).json(updatedPost);
+			res.status(200).json({
+				message: 'Image Post success to update',
+			});
 		} catch (error) {
 			next(error);
 		}

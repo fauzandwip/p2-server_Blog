@@ -50,4 +50,36 @@ const updateDeletePostAuthorization = async (req, res, next) => {
 	}
 };
 
-module.exports = { guardAdminOnly, updateDeletePostAuthorization };
+// const updateCategoryAuthorization = async (req, res, next) => {
+// 	try {
+// 		const { id: UserId, role } = req.user;
+// 		const { id } = req.params;
+
+// 		const category = await Category.findByPk(id);
+
+// 		if (!category) {
+// 			throw {
+// 				name: 'NotFound',
+// 				message: `Category with id ${id} is not found`,
+// 			};
+// 		}
+
+// 		if (role === 'admin') {
+// 			next();
+// 			return;
+// 		}
+
+// 		if (UserId !== category.UserId) {
+// 			throw { name: 'Forbidden' };
+// 		}
+
+// 		next();
+// 	} catch (error) {
+// 		next(error);
+// 	}
+// };
+
+module.exports = {
+	guardAdminOnly,
+	updateDeletePostAuthorization,
+};

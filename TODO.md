@@ -117,7 +117,7 @@ Target:
   - [x] Request body: { email, password }
   - [x] Response:
     - [x] 200: { access_token, email/username, role }
-    - [ ] 401: { error invalid username or email or password }
+    - [x] 401: { error invalid username or email or password }
 
 - [x] Menambahkan Authentication dan Authorization
 
@@ -142,14 +142,14 @@ Target:
 
 ### **Upload File**
 
-- [ ] Meng-update data imgUrl entitas utama (Update / PATCH)
-  - [ ] Endpoint ini akan menerima request body berupa ("multipart/form-data") untuk meng-update data imgUrl.
-  - [ ] Id dikirimkan via request params.
-  - [ ] Membuat fitur upload menggunakan [multer](https://www.npmjs.com/package/multer) dan [imageKit](https://imagekit.io/)/[Cloudinary](https://cloudinary.com) untuk menyimpan file tersebut.
-  - [ ] Jika request berhasil, kembalikan response dengan 200 status code dan response body berupa object message: 'Image [entity name] success to update'
-  - [ ] Jika request gagal karena data tidak ditemukan, kembalikan response dengan status code 404 dan response body berupa object yang berisikan error not found.
-  - [ ] Jika request gagal karena validasi tidak terpenuhi, kembalikan response dengan status code 400 dan response body berupa object yang berisikan validation errors.
-  - [ ] Jika request gagal karena kesalahan server, kembalikan response dengan status code 500.
+- [x] Meng-update data imgUrl entitas utama (Update / PATCH)
+  - [x] Endpoint ini akan menerima request body berupa ("multipart/form-data") untuk meng-update data imgUrl.
+  - [x] Id dikirimkan via request params.
+  - [x] Membuat fitur upload menggunakan [multer](https://www.npmjs.com/package/multer) dan [imageKit](https://imagekit.io/)/[Cloudinary](https://cloudinary.com) untuk menyimpan file tersebut.
+  - [x] Jika request berhasil, kembalikan response dengan 200 status code dan response body berupa object message: 'Image [entity name] success to update'
+  - [x] Jika request gagal karena data tidak ditemukan, kembalikan response dengan status code 404 dan response body berupa object yang berisikan error not found.
+  - [x] Jika request gagal karena validasi tidak terpenuhi, kembalikan response dengan status code 400 dan response body berupa object yang berisikan validation errors.
+  - [x] Jika request gagal karena kesalahan server, kembalikan response dengan status code 500.
 
 ## **W1D3**
 
@@ -159,12 +159,12 @@ Target:
 
 Mengimplementasikan testing terhadap endpoint yang sudah dibuat
 
-- [ ] Login (Admin), perlu melakukan pengecekan pada status dan response ketika:
+- [x] Login (Admin), perlu melakukan pengecekan pada status dan response ketika:
 
-  - [ ] Email tidak diberikan / tidak diinput
-  - [ ] Password tidak diberikan / tidak diinput
-  - [ ] Email diberikan invalid / tidak terdaftar
-  - [ ] Password diberikan salah / tidak match
+  - [x] Email tidak diberikan / tidak diinput
+  - [x] Password tidak diberikan / tidak diinput
+  - [x] Email diberikan invalid / tidak terdaftar
+  - [x] Password diberikan salah / tidak match
   - Pastikan untuk testing ini sediakan dulu data Admin
 
 - [ ] Add Staff, perlu melakukan pengecekan pada status dan response ketika:
