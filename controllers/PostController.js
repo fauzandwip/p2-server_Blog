@@ -1,14 +1,8 @@
 'use strict';
 
 const { Post, User } = require('../models');
-const cloudinary = require('cloudinary').v2;
 const { randomUUID } = require('crypto');
-
-cloudinary.config({
-	cloud_name: 'dchem6nma',
-	api_key: process.env.CLOUDINARY_API_KEY,
-	api_secret: process.env.CLOUDINARY_SECRET_KEY,
-});
+const cloudinary = require('../helpers/cloudinary');
 
 module.exports = class PostController {
 	static async getPosts(req, res, next) {
@@ -77,6 +71,7 @@ module.exports = class PostController {
 				imgUrl,
 				CategoryId,
 			});
+
 			res.status(200).json(updatedPost);
 		} catch (error) {
 			next(error);
