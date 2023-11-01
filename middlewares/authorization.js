@@ -5,7 +5,7 @@ const { Post } = require('../models');
 const guardAdminOnly = (req, res, next) => {
 	try {
 		const { user } = req;
-		console.log(user);
+		// console.log(user);
 
 		if (user.role === 'admin') {
 			next();
@@ -21,18 +21,26 @@ const guardAdminOnly = (req, res, next) => {
 	}
 };
 
-const updateDeletePermission = async (req, res, next) => {
+const updateDeletePostAuthorization = async (req, res, next) => {
 	try {
-		const { id, role } = req.user;
+		const { id: UserId, role } = req.user;
 		const { id: postId } = req.params;
-		const { UserId } = await Post.findByPk(postId);
+
+		const post = await Post.findByPk(postId);
+
+		if (!post) {
+			throw {
+				name: 'NotFound',
+				message: `Post with id ${postId} is not found`,
+			};
+		}
 
 		if (role === 'admin') {
 			next();
 			return;
 		}
 
-		if (id !== UserId) {
+		if (UserId !== post.UserId) {
 			throw { name: 'Forbidden' };
 		}
 
@@ -42,4 +50,4 @@ const updateDeletePermission = async (req, res, next) => {
 	}
 };
 
-module.exports = { guardAdminOnly, updateDeletePermission };
+module.exports = { guardAdminOnly, updateDeletePostAuthorization };

@@ -1,5 +1,5 @@
 const errorHandler = (err, req, res, next) => {
-	let status, message;
+	let status, message, messages;
 	switch (err.name) {
 		case 'JsonWebTokenError':
 			status = 401;
@@ -19,7 +19,9 @@ const errorHandler = (err, req, res, next) => {
 		case 'SequelizeValidationError':
 		case 'SequelizeUniqueConstraintError':
 			status = 400;
-			message = err.errors[0].message;
+			messages = err.errors.map((error) => {
+				return error.message;
+			});
 			break;
 
 		case 'BadRequest':
@@ -38,7 +40,7 @@ const errorHandler = (err, req, res, next) => {
 			break;
 	}
 
-	res.status(status).json({ message });
+	res.status(status).json(message ? { message } : { messages });
 };
 
 module.exports = errorHandler;

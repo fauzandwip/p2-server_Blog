@@ -10,6 +10,7 @@ const authentication = async (req, res, next) => {
 		if (!authorization) {
 			throw { name: 'Unauthenticated' };
 		}
+
 		const token = authorization.replace('Bearer ', '');
 
 		const { id } = verifyToken(token);
@@ -25,7 +26,7 @@ const authentication = async (req, res, next) => {
 			role: user.role,
 		};
 
-		console.log(req.user);
+		// console.log(req.user);
 		next();
 	} catch (error) {
 		next(error);
