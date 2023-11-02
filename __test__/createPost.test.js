@@ -59,7 +59,7 @@ describe('Create new post', () => {
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('message', 'Invalid token');
 	});
-	it('should error while input is empty/null (400)', async () => {
+	it('should error while required input column is empty/null (400)', async () => {
 		const { status, body } = await request(app)
 			.post('/posts')
 			.set('Authorization', `Bearer ${token}`)

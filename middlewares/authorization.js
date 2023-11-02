@@ -43,7 +43,7 @@ const updateDeletePostAuthorization = async (req, res, next) => {
 		if (authorId !== post.authorId) {
 			throw {
 				name: 'Forbidden',
-				message: 'Only admins can update/delete post',
+				message: `You don't have permission`,
 			};
 		}
 
