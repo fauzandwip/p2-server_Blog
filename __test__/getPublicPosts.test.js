@@ -117,10 +117,10 @@ describe('Get all public posts', () => {
 		expect(body.data[0].Author).toHaveProperty('createdAt', expect.any(String));
 		expect(body.data[0].Author).toHaveProperty('updatedAt', expect.any(String));
 	});
-	it.only('should success get all public posts with pagination (200)', async () => {
+	it('should success get all public posts with pagination (200)', async () => {
 		const { status, body } = await request(app).get('/pub/posts?page=3');
 
-		console.dir({ status, body }, { depth: null });
+		// console.dir({ status, body }, { depth: null });
 		// console.log({ status, body });
 		expect(status).toBe(200);
 		expect(body).toBeInstanceOf(Object);
