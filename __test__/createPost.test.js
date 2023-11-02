@@ -19,9 +19,13 @@ const post = {
 let token;
 
 beforeAll(async () => {
-	const newStaff = await Author.create(authorStaff);
-	await Category.create({ name: 'Sport' });
-	token = signToken({ id: newStaff.id });
+	try {
+		const newStaff = await Author.create(authorStaff);
+		await Category.create({ name: 'Sport' });
+		token = signToken({ id: newStaff.id });
+	} catch (error) {
+		console.log(error);
+	}
 });
 
 describe('Create new post', () => {
@@ -43,7 +47,7 @@ describe('Create new post', () => {
 
 		expect(status).toBe(401);
 		expect(body).toBeInstanceOf(Object);
-		expect(body).toHaveProperty('message', 'Access Token is missing');
+		expect(body).toHaveProperty('message', 'You must login first');
 	});
 	it('should error while acces_token is invalid (401)', async () => {
 		const { status, body } = await request(app)

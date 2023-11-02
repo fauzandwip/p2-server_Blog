@@ -9,7 +9,11 @@ const authorAdmin = {
 };
 
 beforeAll(async () => {
-	await Author.create({ ...authorAdmin, role: 'admin' });
+	try {
+		await Author.create({ ...authorAdmin, role: 'admin' });
+	} catch (error) {
+		console.log(error);
+	}
 });
 
 describe('Author Admin login', () => {

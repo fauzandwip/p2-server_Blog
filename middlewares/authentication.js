@@ -10,7 +10,7 @@ const authentication = async (req, res, next) => {
 		if (!authorization) {
 			throw {
 				name: 'Unauthenticated',
-				message: 'Access Token is missing',
+				message: 'You must login first',
 			};
 		}
 
