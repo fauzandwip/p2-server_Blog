@@ -4,7 +4,7 @@
 module.exports = {
 	async up(queryInterface, Sequelize) {
 		const posts = require('../data/posts').map((data) => {
-			data.createdAt = data.updatedAt = new Date();
+			// data.createdAt = data.updatedAt = new Date();
 			return data;
 		});
 

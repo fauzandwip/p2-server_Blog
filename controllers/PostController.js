@@ -3,6 +3,7 @@
 const { Post, Author } = require('../models');
 const { randomUUID } = require('crypto');
 const cloudinary = require('../helpers/cloudinary');
+const { Op } = require('sequelize');
 
 module.exports = class PostController {
 	static async getPosts(req, res, next) {
@@ -16,6 +17,61 @@ module.exports = class PostController {
 				},
 			});
 			res.status(200).json(posts);
+		} catch (error) {
+			next(error);
+		}
+	}
+
+	static async getPublicPosts(req, res, next) {
+		try {
+			let { search, sort, filter, page, limit } = req.query;
+			const queryOption = {
+				where: {},
+				include: {
+					model: Author,
+					attributes: {
+						exclude: ['password'],
+					},
+				},
+			};
+
+			if (search) {
+				queryOption.where.title = {
+					[Op.iLike]: `%${search}%`,
+				};
+			}
+
+			if (sort) {
+				if (sort.charAt(0) !== '-') {
+					queryOption.order = [[sort, 'ASC']];
+				} else {
+					queryOption.order = [[sort.slice(1), 'DESC']];
+				}
+			}
+
+			if (filter) {
+				const query = filter.category.split(',');
+				queryOption.where.categoryId = {
+					[Op.or]: query,
+				};
+			}
+
+			if (!Number(page)) page = 1;
+			if (!Number(limit)) limit = 10;
+
+			queryOption.limit = limit;
+			queryOption.offset = (page - 1) * limit;
+
+			console.log(queryOption);
+			const { count, rows } = await Post.findAndCountAll(queryOption);
+
+			res.status(200).json({
+				total: count,
+				size: +limit,
+				totalPage: Math.ceil(count / limit),
+				currentPage: +page,
+				data: rows,
+			});
 		} catch (error) {
 			next(error);
 		}

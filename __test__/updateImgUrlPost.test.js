@@ -1,4 +1,7 @@
+'use strict';
+
 const app = require('../app');
+const path = require('path');
 const request = require('supertest');
 const { sequelize, Author, Category, Post } = require('../models');
 const { signToken } = require('../helpers/jwt');
@@ -23,6 +26,7 @@ const post = {
 	authorId: 1,
 };
 
+let imagePath = path.join(__dirname, '../images/forest.jpg');
 let tokenAdmin, tokenStaff;
 
 beforeAll(async () => {
@@ -40,15 +44,13 @@ beforeAll(async () => {
 
 describe('Update image url post by id', () => {
 	it('should success update image url post by id (200)', async () => {
+		// console.log(imagePath);
 		const { status, body } = await request(app)
 			.patch(`/posts/${1}/img-url`)
 			.set('Authorization', `Bearer ${tokenAdmin}`)
-			.attach(
-				'imageUrl',
-				'/Users/fauzandp/Downloads/kristaps-ungurs-PMIYom6wzAc-unsplash.jpg'
-			);
+			.attach('imageUrl', imagePath);
 
-		// console.dir({ status, body });
+		// console.log({ status, body });
 		expect(status).toBe(200);
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('message', 'Image Post success to update');
