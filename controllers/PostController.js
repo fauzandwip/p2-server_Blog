@@ -1,6 +1,6 @@
 'use strict';
 
-const { Post, User } = require('../models');
+const { Post, Author } = require('../models');
 const { randomUUID } = require('crypto');
 const cloudinary = require('../helpers/cloudinary');
 
@@ -9,7 +9,7 @@ module.exports = class PostController {
 		try {
 			const posts = await Post.findAll({
 				include: {
-					model: User,
+					model: Author,
 					attributes: {
 						exclude: ['password'],
 					},
@@ -23,14 +23,14 @@ module.exports = class PostController {
 
 	static async createPost(req, res, next) {
 		try {
-			const { id: UserId } = req.user;
-			const { title, content, imgUrl, CategoryId } = req.body;
+			const { id: authorId } = req.author;
+			const { title, content, imgUrl, categoryId } = req.body;
 			const newPost = await Post.create({
 				title,
 				content,
 				imgUrl,
-				CategoryId,
-				UserId,
+				categoryId,
+				authorId,
 			});
 
 			res.status(201).json(newPost);
@@ -60,14 +60,14 @@ module.exports = class PostController {
 	static async updatePost(req, res, next) {
 		try {
 			const { id } = req.params;
-			const { title, content, imgUrl, CategoryId } = req.body;
+			const { title, content, imgUrl, categoryId } = req.body;
 			const post = await Post.findByPk(id);
 
 			const updatedPost = await post.update({
 				title,
 				content,
 				imgUrl,
-				CategoryId,
+				categoryId,
 			});
 
 			res.status(200).json(updatedPost);

@@ -3,28 +3,28 @@
     "title": "Health Title",
     "content": "eat vegetables and fruits",
     "imgUrl": "https://testUrl.com",
-    "CategoryId": 4,
-    "UserId": 6
+    "categoryId": 4,
+    "authorId": 6
   },
   {
     "title": "Sport Title",
     "content": "playing football",
     "imgUrl": "https://testUrl.com",
-    "CategoryId": 1,
-    "UserId": 5
+    "categoryId": 1,
+    "authorId": 5
   },
   {
     "title": "Sport Title",
     "content": "Playing Badminton",
     "imgUrl": "https://testUrl.com",
-    "CategoryId": 1,
-    "UserId": 5
+    "categoryId": 1,
+    "authorId": 5
   },
   {
     "title": "Technology Title",
     "content": "write coding",
     "imgUrl": "https://testUrl.com",
-    "CategoryId": 3,
-    "UserId": 7
+    "categoryId": 3,
+    "authorId": 7
   }
 ]

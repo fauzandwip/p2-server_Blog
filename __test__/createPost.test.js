@@ -1,10 +1,10 @@
 const app = require('../app');
 const request = require('supertest');
-const { sequelize, User, Category } = require('../models');
+const { sequelize, Author, Category } = require('../models');
 const { signToken } = require('../helpers/jwt');
 const { queryInterface } = sequelize;
 
-const userStaff = {
+const authorStaff = {
 	email: 'staff1@gmail.com',
 	password: '12345',
 };
@@ -13,13 +13,13 @@ const post = {
 	title: "Let's Jogging",
 	content: 'Jogging makes the body fresh',
 	imgUrl: 'http://testUrl.com',
-	CategoryId: 1,
+	categoryId: 1,
 };
 
 let token;
 
 beforeAll(async () => {
-	const newStaff = await User.create(userStaff);
+	const newStaff = await Author.create(authorStaff);
 	await Category.create({ name: 'Sport' });
 	token = signToken({ id: newStaff.id });
 });
@@ -36,9 +36,9 @@ describe('Create new post', () => {
 		expect(body).toHaveProperty('title', post.title);
 		expect(body).toHaveProperty('content', post.content);
 		expect(body).toHaveProperty('imgUrl', post.imgUrl);
-		expect(body).toHaveProperty('CategoryId', post.CategoryId);
+		expect(body).toHaveProperty('categoryId', post.categoryId);
 	});
-	it('should error while user is not login (401)', async () => {
+	it('should error while author is not login (401)', async () => {
 		const { status, body } = await request(app).post('/posts').send(post);
 
 		expect(status).toBe(401);
@@ -71,7 +71,7 @@ describe('Create new post', () => {
 });
 
 afterAll(async () => {
-	await queryInterface.bulkDelete('Users', null, {
+	await queryInterface.bulkDelete('Authors', null, {
 		truncate: true,
 		cascade: true,
 		restartIdentity: true,

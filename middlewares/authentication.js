@@ -1,7 +1,7 @@
 'use strict';
 
 const { verifyToken } = require('../helpers/jwt');
-const { User } = require('../models');
+const { Author } = require('../models');
 
 const authentication = async (req, res, next) => {
 	try {
@@ -17,22 +17,22 @@ const authentication = async (req, res, next) => {
 		const token = authorization.replace('Bearer ', '');
 
 		const { id } = verifyToken(token);
-		const user = await User.findByPk(id);
+		const author = await Author.findByPk(id);
 
-		if (!user) {
+		if (!author) {
 			throw {
 				name: 'Unauthenticated',
-				message: `User doesn't exists`,
+				message: `Author doesn't exists`,
 			};
 		}
 
-		req.user = {
-			id: user.id,
-			email: user.email,
-			role: user.role,
+		req.author = {
+			id: author.id,
+			email: author.email,
+			role: author.role,
 		};
 
-		// console.log(req.user);
+		// console.log(req.author);
 		next();
 	} catch (error) {
 		next(error);

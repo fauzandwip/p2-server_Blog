@@ -4,10 +4,10 @@ const { Post } = require('../models');
 
 const guardAdminOnly = (req, res, next) => {
 	try {
-		const { user } = req;
-		// console.log(user);
+		const { author } = req;
+		// console.log(author);
 
-		if (user.role === 'admin') {
+		if (author.role === 'admin') {
 			next();
 			return;
 		}
@@ -23,7 +23,7 @@ const guardAdminOnly = (req, res, next) => {
 
 const updateDeletePostAuthorization = async (req, res, next) => {
 	try {
-		const { id: UserId, role } = req.user;
+		const { id: authorId, role } = req.author;
 		const { id: postId } = req.params;
 
 		const post = await Post.findByPk(postId);
@@ -40,7 +40,7 @@ const updateDeletePostAuthorization = async (req, res, next) => {
 			return;
 		}
 
-		if (UserId !== post.UserId) {
+		if (authorId !== post.authorId) {
 			throw {
 				name: 'Forbidden',
 				message: 'Only admins can update/delete post',

@@ -1,20 +1,20 @@
 const app = require('../app');
 const request = require('supertest');
-const { sequelize, User } = require('../models');
+const { sequelize, Author } = require('../models');
 const { signToken } = require('../helpers/jwt');
 const { queryInterface } = sequelize;
 
-const userStaff = {
+const authorStaff = {
 	email: 'staff1@gmail.com',
 	password: '12345',
 };
 
-const userStaff2 = {
+const authorStaff2 = {
 	email: 'staff2@gmail.com',
 	password: '12345',
 };
 
-const userAdmin = {
+const authorAdmin = {
 	email: 'admin1@gmail.com',
 	password: '12345',
 	role: 'admin',
@@ -23,29 +23,29 @@ const userAdmin = {
 let token;
 
 beforeAll(async () => {
-	const newAdmin = await User.create(userAdmin);
+	const newAdmin = await Author.create(authorAdmin);
 	token = signToken({ id: newAdmin.id });
-	await User.create(userStaff2);
+	await Author.create(authorStaff2);
 });
 
-describe('Add user staff', () => {
-	it('should success create user staff (200)', async () => {
+describe('Add author staff', () => {
+	it('should success create author staff (200)', async () => {
 		const { status, body } = await request(app)
 			.post('/add-user')
 			.set('Authorization', `Bearer ${token}`)
-			.send(userStaff);
+			.send(authorStaff);
 
 		expect(status).toBe(201);
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('id', 3);
-		expect(body).toHaveProperty('email', userStaff.email);
+		expect(body).toHaveProperty('email', authorStaff.email);
 	});
-	it("should error while user doesn't input email (400)", async () => {
+	it("should error while author doesn't input email (400)", async () => {
 		const { status, body } = await request(app)
 			.post('/add-user')
 			.set('Authorization', `Bearer ${token}`)
 			.send({
-				password: userStaff.password,
+				password: authorStaff.password,
 			});
 
 		expect(status).toBe(400);
@@ -53,12 +53,12 @@ describe('Add user staff', () => {
 		expect(body.messages).toBeInstanceOf(Array);
 		expect(body.messages).toContain('Email is required');
 	});
-	it("should error while user doesn't input password (400)", async () => {
+	it("should error while author doesn't input password (400)", async () => {
 		const { status, body } = await request(app)
 			.post('/add-user')
 			.set('Authorization', `Bearer ${token}`)
 			.send({
-				email: userStaff.email,
+				email: authorStaff.email,
 			});
 
 		expect(status).toBe(400);
@@ -66,13 +66,13 @@ describe('Add user staff', () => {
 		expect(body.messages).toBeInstanceOf(Array);
 		expect(body.messages).toContain('Password is required');
 	});
-	it('should error while user input empty email (400)', async () => {
+	it('should error while author input empty email (400)', async () => {
 		const { status, body } = await request(app)
 			.post('/add-user')
 			.set('Authorization', `Bearer ${token}`)
 			.send({
 				email: '',
-				password: userStaff.password,
+				password: authorStaff.password,
 			});
 
 		expect(status).toBe(400);
@@ -80,12 +80,12 @@ describe('Add user staff', () => {
 		expect(body.messages).toBeInstanceOf(Array);
 		expect(body.messages).toContain('Email is required');
 	});
-	it('should error while user input empty password (400)', async () => {
+	it('should error while author input empty password (400)', async () => {
 		const { status, body } = await request(app)
 			.post('/add-user')
 			.set('Authorization', `Bearer ${token}`)
 			.send({
-				email: userStaff.email,
+				email: authorStaff.email,
 				password: '',
 			});
 
@@ -98,7 +98,7 @@ describe('Add user staff', () => {
 		const { status, body } = await request(app)
 			.post('/add-user')
 			.set('Authorization', `Bearer ${token}`)
-			.send(userStaff2);
+			.send(authorStaff2);
 
 		// console.log(body);
 		expect(status).toBe(409);
@@ -111,7 +111,7 @@ describe('Add user staff', () => {
 			.set('Authorization', `Bearer ${token}`)
 			.send({
 				email: 'test.com',
-				password: userStaff.password,
+				password: authorStaff.password,
 			});
 
 		expect(status).toBe(400);
@@ -119,10 +119,10 @@ describe('Add user staff', () => {
 		expect(body.messages).toBeInstanceOf(Array);
 		expect(body.messages).toContain('Invalid email format');
 	});
-	it('should error while acces_token is undefined/null (401)', async () => {
+	it('should error while author is not login (401)', async () => {
 		const { status, body } = await request(app)
 			.post('/add-user')
-			.send(userStaff);
+			.send(authorStaff);
 
 		expect(status).toBe(401);
 		expect(body).toBeInstanceOf(Object);
@@ -132,7 +132,7 @@ describe('Add user staff', () => {
 		const { status, body } = await request(app)
 			.post('/add-user')
 			.set('Authorization', `Bearer randomString`)
-			.send(userStaff);
+			.send(authorStaff);
 
 		expect(status).toBe(401);
 		expect(body).toBeInstanceOf(Object);
@@ -141,7 +141,7 @@ describe('Add user staff', () => {
 });
 
 afterAll(async () => {
-	await queryInterface.bulkDelete('Users', null, {
+	await queryInterface.bulkDelete('Authors', null, {
 		truncate: true,
 		cascade: true,
 		restartIdentity: true,
