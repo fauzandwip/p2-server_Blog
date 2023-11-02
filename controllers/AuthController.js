@@ -43,18 +43,11 @@ module.exports = class AuthController {
 			}
 
 			const author = await Author.findOne({ where: { email } });
-			if (!author) {
-				throw {
-					name: 'Unauthenticated',
-					message: 'Invalid email',
-				};
-			}
 
-			const isValidPassword = comparePassword(password, author.password);
-			if (!isValidPassword) {
+			if (!author || !comparePassword(password, author.password)) {
 				throw {
 					name: 'Unauthenticated',
-					message: 'Invalid password',
+					message: 'Invalid email/password',
 				};
 			}
 

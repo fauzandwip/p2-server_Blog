@@ -85,7 +85,7 @@ describe('Get all posts', () => {
 		// console.log(status, body);
 		expect(status).toBe(401);
 		expect(body).toBeInstanceOf(Object);
-		expect(body).toHaveProperty('message', 'You must login first');
+		expect(body).toHaveProperty('message', 'Token must be provided');
 	});
 	it('should error while acces_token is invalid (401)', async () => {
 		const { status, body } = await request(app)

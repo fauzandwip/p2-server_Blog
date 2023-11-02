@@ -14,7 +14,7 @@ const guardAdminOnly = (req, res, next) => {
 
 		throw {
 			name: 'Forbidden',
-			message: 'Only admins can add staffs',
+			message: 'You are not authorized, ADMIN ONLY',
 		};
 	} catch (error) {
 		next(error);
@@ -35,12 +35,7 @@ const updateDeletePostAuthorization = async (req, res, next) => {
 			};
 		}
 
-		if (role === 'admin') {
-			next();
-			return;
-		}
-
-		if (authorId !== post.authorId) {
+		if (role !== 'admin' && authorId !== post.authorId) {
 			throw {
 				name: 'Forbidden',
 				message: `You don't have permission`,
