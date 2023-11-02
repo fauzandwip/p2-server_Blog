@@ -187,50 +187,50 @@ Mengimplementasikan testing terhadap endpoint yang sudah dibuat
   - [x] Gagal ketika request body tidak sesuai (validation required)
   - Buatlah testing untuk masing-masing fitur
 
-- [ ] Read, perlu melakukan pengecekan pada status dan response ketika:
+- [x] Read, perlu melakukan pengecekan pada status dan response ketika:
 
-  - [ ] Berhasil mendapatkan data Entitas Utama
-  - [ ] Gagal menjalankan fitur karena belum login
-  - [ ] Gagal menjalankan fitur karena token yang diberikan tidak valid
+  - [x] Berhasil mendapatkan data Entitas Utama
+  - [x] Gagal menjalankan fitur karena belum login
+  - [x] Gagal menjalankan fitur karena token yang diberikan tidak valid
 
-- [ ] Read Detail, perlu melakukan pengecekan pada status dan response ketika:
+- [x] Read Detail, perlu melakukan pengecekan pada status dan response ketika:
 
-  - [ ] Berhasil mendapatkan 1 Entitas Utama sesuai dengan params id yang diberikan
-  - [ ] Gagal menjalankan fitur karena belum login
-  - [ ] Gagal menjalankan fitur karena token yang diberikan tidak valid
-  - [ ] Gagal mendapatkan Entitas Utama karena params id yang diberikan tidak ada di database / invalid
+  - [x] Berhasil mendapatkan 1 Entitas Utama sesuai dengan params id yang diberikan
+  - [x] Gagal menjalankan fitur karena belum login
+  - [x] Gagal menjalankan fitur karena token yang diberikan tidak valid
+  - [x] Gagal mendapatkan Entitas Utama karena params id yang diberikan tidak ada di database / invalid
 
-- [ ] Update PUT, perlu melakukan pengecekan pada status dan response ketika:
+- [x] Update PUT, perlu melakukan pengecekan pada status dan response ketika:
 
-  - [ ] Berhasil mengupdate data Entitas Utama berdasarkan params id yang diberikan
-  - [ ] Gagal menjalankan fitur karena belum login
-  - [ ] Gagal menjalankan fitur karena token yang diberikan tidak valid
-  - [ ] Gagal karena id entity yang dikirim tidak terdapat di database
-  - [ ] Gagal menjalankan fitur ketika Staff mengolah data entity yang bukan miliknya
-  - [ ] Gagal ketika request body yang diberikan tidak sesuai
+  - [x] Berhasil mengupdate data Entitas Utama berdasarkan params id yang diberikan
+  - [x] Gagal menjalankan fitur karena belum login
+  - [x] Gagal menjalankan fitur karena token yang diberikan tidak valid
+  - [x] Gagal karena id entity yang dikirim tidak terdapat di database
+  - [x] Gagal menjalankan fitur ketika Staff mengolah data entity yang bukan miliknya
+  - [x] Gagal ketika request body yang diberikan tidak sesuai
 
-- [ ] Delete, perlu melakukan pengecekan pada status dan response ketika:
+- [x] Delete, perlu melakukan pengecekan pada status dan response ketika:
 
-  - [ ] Berhasil menghapus data Entitas Utama berdasarkan params id yang diberikan
-  - [ ] Gagal menjalankan fitur karena belum login
-  - [ ] Gagal menjalankan fitur karena token yang diberikan tidak valid
-  - [ ] Gagal karena id entity yang dikirim tidak terdapat di database
-  - [ ] Gagal menjalankan fitur ketika Staff menghapus entity yang bukan miliknya
+  - [x] Berhasil menghapus data Entitas Utama berdasarkan params id yang diberikan
+  - [x] Gagal menjalankan fitur karena belum login
+  - [x] Gagal menjalankan fitur karena token yang diberikan tidak valid
+  - [x] Gagal karena id entity yang dikirim tidak terdapat di database
+  - [x] Gagal menjalankan fitur ketika Staff menghapus entity yang bukan miliknya
 
-- [ ] Update PATCH, perlu melakukan pengecekan pada status dan response ketika:
+- [x] Update PATCH, perlu melakukan pengecekan pada status dan response ketika:
 
-  - [ ] Berhasil mengupdate imgUrl Entitas Utama berdasarkan params id yang diberikan
-  - [ ] Gagal menjalankan fitur karena belum login
-  - [ ] Gagal menjalankan fitur karena token yang diberikan tidak valid
-  - [ ] Gaga menjalankan fiturl karena id entity yang dikirim tidak terdapat di database
-  - [ ] Gagal menjalankan fitur ketika Staff mengolah data entity yang bukan miliknya
-  - [ ] Gagal ketika request body yang diberikan tidak sesuai
+  - [x] Berhasil mengupdate imgUrl Entitas Utama berdasarkan params id yang diberikan
+  - [x] Gagal menjalankan fitur karena belum login
+  - [x] Gagal menjalankan fitur karena token yang diberikan tidak valid
+  - [x] Gaga menjalankan fiturl karena id entity yang dikirim tidak terdapat di database
+  - [x] Gagal menjalankan fitur ketika Staff mengolah data entity yang bukan miliknya
+  - [x] Gagal ketika request body yang diberikan tidak sesuai
 
-- [ ] Read Entitas kedua data genres/categories/types perlu melakukan pengecekan pada status dan response ketika:
+- [x] Read Entitas kedua data genres/categories/types perlu melakukan pengecekan pada status dan response ketika:
 
-  - [ ] Berhasil mendapatkan data entitas kedua
-  - [ ] Gagal menjalankan fitur karena belum login
-  - [ ] Gagal menjalankan fitur karena token yang diberikan tidak valid
+  - [x] Berhasil mendapatkan data entitas kedua
+  - [x] Gagal menjalankan fitur karena belum login
+  - [x] Gagal menjalankan fitur karena token yang diberikan tidak valid
 
 - [ ] Endpoint List pada public site, perlu melakukan pengecekan pada status dan response ketika:
 

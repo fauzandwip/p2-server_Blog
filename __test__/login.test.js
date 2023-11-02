@@ -55,7 +55,7 @@ describe('Author Admin login', () => {
 		});
 		expect(status).toBe(401);
 		expect(body).toBeInstanceOf(Object);
-		expect(body).toHaveProperty('message', 'Invalid email');
+		expect(body).toHaveProperty('message', 'Invalid email/password');
 	});
 
 	it('should error while password is invalid (401)', async () => {
@@ -65,7 +65,7 @@ describe('Author Admin login', () => {
 		});
 		expect(status).toBe(401);
 		expect(body).toBeInstanceOf(Object);
-		expect(body).toHaveProperty('message', 'Invalid password');
+		expect(body).toHaveProperty('message', 'Invalid email/password');
 	});
 });
 

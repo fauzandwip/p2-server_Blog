@@ -48,7 +48,7 @@ describe('Update image url post by id', () => {
 				'/Users/fauzandp/Downloads/kristaps-ungurs-PMIYom6wzAc-unsplash.jpg'
 			);
 
-		console.dir({ status, body });
+		// console.dir({ status, body });
 		expect(status).toBe(200);
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('message', 'Image Post success to update');
@@ -84,11 +84,7 @@ describe('Update image url post by id', () => {
 	it(`should error while staff update posts that aren't their own (403)`, async () => {
 		const { status, body } = await request(app)
 			.patch(`/posts/${1}/img-url`)
-			.set('Authorization', `Bearer ${tokenStaff}`)
-			.attach(
-				'imageUrl',
-				'/Users/fauzandp/Downloads/kristaps-ungurs-PMIYom6wzAc-unsplash.jpg'
-			);
+			.set('Authorization', `Bearer ${tokenStaff}`);
 
 		// console.log({ status, body });
 		expect(status).toBe(403);
