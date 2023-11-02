@@ -62,7 +62,6 @@ module.exports = class PostController {
 			queryOption.limit = limit;
 			queryOption.offset = (page - 1) * limit;
 
-			console.log(queryOption);
 			const { count, rows } = await Post.findAndCountAll(queryOption);
 
 			res.status(200).json({
