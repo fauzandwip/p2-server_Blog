@@ -152,7 +152,7 @@ module.exports = class PostController {
 			if (!req.file) {
 				throw {
 					name: 'BadRequest',
-					message: 'Image URL is required',
+					message: 'Image file is required',
 				};
 			}
 

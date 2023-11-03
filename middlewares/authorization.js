@@ -7,15 +7,14 @@ const guardAdminOnly = (req, res, next) => {
 		const { author } = req;
 		// console.log(author);
 
-		if (author.role === 'admin') {
-			next();
-			return;
+		if (author.role !== 'admin') {
+			throw {
+				name: 'Forbidden',
+				message: 'You are not authorized, ADMIN ONLY',
+			};
 		}
 
-		throw {
-			name: 'Forbidden',
-			message: 'You are not authorized, ADMIN ONLY',
-		};
+		next();
 	} catch (error) {
 		next(error);
 	}

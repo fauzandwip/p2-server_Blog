@@ -102,7 +102,7 @@ describe('Update image url post by id', () => {
 		// console.log({ status, body });
 		expect(status).toBe(400);
 		expect(body).toBeInstanceOf(Object);
-		expect(body).toHaveProperty('message', 'Image URL is required');
+		expect(body).toHaveProperty('message', 'Image file is required');
 	});
 });
 

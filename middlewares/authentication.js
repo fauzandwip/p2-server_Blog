@@ -22,7 +22,7 @@ const authentication = async (req, res, next) => {
 		if (!author) {
 			throw {
 				name: 'Unauthenticated',
-				message: `Author doesn't exists`,
+				message: `Invalid token`,
 			};
 		}
 
