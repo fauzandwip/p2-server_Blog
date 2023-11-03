@@ -67,7 +67,7 @@ describe('Get detail post by id', () => {
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('message', 'Invalid token');
 	});
-	it('should error while post id is not found (404)', async () => {
+	it('should error while post id not found (404)', async () => {
 		const { status, body } = await request(app)
 			.get(`/posts/${3}`)
 			.set('Authorization', `Bearer ${token}`);
@@ -75,7 +75,7 @@ describe('Get detail post by id', () => {
 		// console.dir({ status, body });
 		expect(status).toBe(404);
 		expect(body).toBeInstanceOf(Object);
-		expect(body).toHaveProperty('message', 'Post with id 3 is not found');
+		expect(body).toHaveProperty('message', 'Post with id 3 not found');
 	});
 });
 

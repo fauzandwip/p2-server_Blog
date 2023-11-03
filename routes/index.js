@@ -7,7 +7,7 @@ const router = express.Router();
 
 // auth
 // prettier-ignore
-router.post('/add-user', authentication, guardAdminOnly, AuthController.addUser);
+router.post('/add-user', authentication, guardAdminOnly, AuthController.addAuthor);
 router.post('/login', AuthController.login);
 
 router.use('/posts', authentication, require('./posts'));

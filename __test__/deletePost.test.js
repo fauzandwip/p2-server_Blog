@@ -81,7 +81,7 @@ describe('Delete post by id', () => {
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('message', 'Invalid token');
 	});
-	it('should error while post id is not found (404)', async () => {
+	it('should error while post id not found (404)', async () => {
 		const { status, body } = await request(app)
 			.delete(`/posts/${3}`)
 			.set('Authorization', `Bearer ${tokenAdmin}`);
@@ -89,7 +89,7 @@ describe('Delete post by id', () => {
 		// console.log({ status, body });
 		expect(status).toBe(404);
 		expect(body).toBeInstanceOf(Object);
-		expect(body).toHaveProperty('message', 'Post with id 3 is not found');
+		expect(body).toHaveProperty('message', 'Post with id 3 not found');
 	});
 	it(`should error while staff update posts that aren't their own (403)`, async () => {
 		const { status, body } = await request(app)

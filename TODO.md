@@ -232,26 +232,26 @@ Mengimplementasikan testing terhadap endpoint yang sudah dibuat
   - [x] Gagal menjalankan fitur karena belum login
   - [x] Gagal menjalankan fitur karena token yang diberikan tidak valid
 
-- [ ] Endpoint List pada public site, perlu melakukan pengecekan pada status dan response ketika:
+- [x] Endpoint List pada public site, perlu melakukan pengecekan pada status dan response ketika:
 
-  - [ ] Berhasil mendapatkan Entitas Utama tanpa menggunakan query filter parameter
-  - [ ] Berhasil mendapatkan Entitas Utama dengan 1 query filter parameter
-  - [ ] Berhasil mendapatkan Entitas Utama serta panjang yang sesuai ketika memberikan page tertentu (cek pagination-nya)
+  - [x] Berhasil mendapatkan Entitas Utama tanpa menggunakan query filter parameter
+  - [x] Berhasil mendapatkan Entitas Utama dengan 1 query filter parameter
+  - [x] Berhasil mendapatkan Entitas Utama serta panjang yang sesuai ketika memberikan page tertentu (cek pagination-nya)
   - Pastikan untuk testing ini sediakan dulu sekitar 20 data untuk diinput di beforeAll, sehingga kita bisa melakukan ekspektasi pada data dan jumlahnya yang kita dapat ketika filter dan pagination
 
-- [ ] Endpoint Detail pada public site, perlu melakukan pengecekan pada status dan response ketika:
-  - [ ] Berhasil mendapatkan 1 Entitas Utama sesuai dengan params id yang diberikan
-  - [ ] Gagal mendapatkan Entitas Utama karena params id yang diberikan tidak ada di database / invalid
+- [x] Endpoint Detail pada public site, perlu melakukan pengecekan pada status dan response ketika:
+  - [x] Berhasil mendapatkan 1 Entitas Utama sesuai dengan params id yang diberikan
+  - [x] Gagal mendapatkan Entitas Utama karena params id yang diberikan tidak ada di database / invalid
 
 ### **Sorting and Pagination, Filter**
 
 Mengimplementasikan sorting, pagination dan filter pada aplikasi server yang sudah dibuat
 
-- [ ] Get list entitas utama pada Public Site
-  - [ ] Search menggunakan title/name Entitas Utama
-  - [ ] Sorting berdasarkan data terbaru/terlama (ASC/DESC)
-  - [ ] Filter Entitas Utama berdasarkan Entitas Kedua (genres/categories/types)
-  - [ ] Pagination dengan limit data per page berjumlah 10
+- [x] Get list entitas utama pada Public Site
+  - [x] Search menggunakan title/name Entitas Utama
+  - [x] Sorting berdasarkan data terbaru/terlama (ASC/DESC)
+  - [x] Filter Entitas Utama berdasarkan Entitas Kedua (genres/categories/types)
+  - [x] Pagination dengan limit data per page berjumlah 10
 
 ## **W1D4 & W1D6**
 

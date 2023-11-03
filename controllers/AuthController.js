@@ -5,7 +5,7 @@ const { signToken } = require('../helpers/jwt');
 const { Author } = require('../models');
 
 module.exports = class AuthController {
-	static async addUser(req, res, next) {
+	static async addAuthor(req, res, next) {
 		try {
 			const { username, email, password, phoneNumber, address } = req.body;
 			const newAuthor = await Author.create({

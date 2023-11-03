@@ -12,6 +12,8 @@ const authorStaff = {
 };
 
 let dateNow = new Date();
+let dateNowString = dateNow.toISOString();
+
 const posts = [
 	{
 		title: "Let's Jogging",
@@ -65,8 +67,8 @@ describe('Get all posts', () => {
 		expect(body[0]).toHaveProperty('imgUrl', posts[0].imgUrl);
 		expect(body[0]).toHaveProperty('categoryId', posts[0].categoryId);
 		expect(body[0]).toHaveProperty('authorId', posts[0].authorId);
-		expect(body[0]).toHaveProperty('createdAt', expect.any(String));
-		expect(body[0]).toHaveProperty('updatedAt', expect.any(String));
+		expect(body[0]).toHaveProperty('createdAt', dateNowString);
+		expect(body[0]).toHaveProperty('updatedAt', dateNowString);
 		// author
 		expect(body[0]).toHaveProperty('Author', expect.any(Object));
 		expect(body[0].Author).not.toHaveProperty('password');

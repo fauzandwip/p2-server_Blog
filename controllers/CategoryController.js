@@ -32,7 +32,7 @@ module.exports = class CategoryController {
 			if (!category) {
 				throw {
 					name: 'NotFound',
-					message: `Category with id ${id} is not found`,
+					message: `Category with id ${id} not found`,
 				};
 			}
 
@@ -51,7 +51,7 @@ module.exports = class CategoryController {
 			if (!category) {
 				throw {
 					name: 'NotFound',
-					message: `Category with id ${id} is not found`,
+					message: `Category with id ${id} not found`,
 				};
 			}
 

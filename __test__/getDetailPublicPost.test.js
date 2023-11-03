@@ -43,13 +43,13 @@ describe('Get detail public post by id', () => {
 		expect(body).toHaveProperty('createdAt', expect.any(String));
 		expect(body).toHaveProperty('updatedAt', expect.any(String));
 	});
-	it('should error while post id is not found (404)', async () => {
+	it('should error while post id not found (404)', async () => {
 		const { status, body } = await request(app).get(`/pub/posts/${3}`);
 
 		// console.dir({ status, body });
 		expect(status).toBe(404);
 		expect(body).toBeInstanceOf(Object);
-		expect(body).toHaveProperty('message', 'Post with id 3 is not found');
+		expect(body).toHaveProperty('message', 'Post with id 3 not found');
 	});
 });
 

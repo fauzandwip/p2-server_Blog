@@ -102,7 +102,7 @@ describe('Get all public posts', () => {
 		expect(body.data[0]).toHaveProperty('createdAt', expect.any(String));
 		expect(body.data[0]).toHaveProperty('updatedAt', expect.any(String));
 		expect(body.data[0]).toHaveProperty('Author', expect.any(Object));
-		// // Author object data
+		// Author object data
 		const author = await Author.findByPk(posts[0].authorId);
 		expect(body.data[0].Author).not.toHaveProperty('password');
 		expect(body.data[0].Author).toHaveProperty('id', author.id);
@@ -132,32 +132,7 @@ describe('Get all public posts', () => {
 		expect(body.data).toBeInstanceOf(Array);
 		expect(body.data).toHaveLength(5);
 		expect(body.data[0]).toBeInstanceOf(Object);
-		// first object in array data
-		// expect(body.data).toBeInstanceOf(Array);
-		// expect(body.data[0]).toBeInstanceOf(Object);
-		// expect(body.data[0]).toHaveProperty('id', 1);
-		// expect(body.data[0]).toHaveProperty('title', posts[0].title);
-		// expect(body.data[0]).toHaveProperty('content', posts[0].content);
-		// expect(body.data[0]).toHaveProperty('imgUrl', posts[0].imgUrl);
-		// expect(body.data[0]).toHaveProperty('categoryId', posts[0].categoryId);
-		// expect(body.data[0]).toHaveProperty('authorId', posts[0].authorId);
-		// expect(body.data[0]).toHaveProperty('createdAt', expect.any(String));
-		// expect(body.data[0]).toHaveProperty('updatedAt', expect.any(String));
-		// expect(body.data[0]).toHaveProperty('Author', expect.any(Object));
-		// // // Author object data
-		// const author = await Author.findByPk(posts[0].authorId);
-		// expect(body.data[0].Author).not.toHaveProperty('password');
-		// expect(body.data[0].Author).toHaveProperty('id', author.id);
-		// expect(body.data[0].Author).toHaveProperty('username', author.username);
-		// expect(body.data[0].Author).toHaveProperty('email', author.email);
-		// expect(body.data[0].Author).toHaveProperty('role', author.role);
-		// expect(body.data[0].Author).toHaveProperty(
-		// 	'phoneNumber',
-		// 	author.phoneNumber
-		// );
-		// expect(body.data[0].Author).toHaveProperty('address', author.address);
-		// expect(body.data[0].Author).toHaveProperty('createdAt', expect.any(String));
-		// expect(body.data[0].Author).toHaveProperty('updatedAt', expect.any(String));
+		expect(body.data[0]).toHaveProperty('Author', expect.any(Object));
 	});
 });
 

@@ -39,14 +39,7 @@ module.exports = (sequelize, DataTypes) => {
 					notEmpty: { msg: 'Category is required' },
 				},
 			},
-			authorId: {
-				type: DataTypes.INTEGER,
-				allowNull: false,
-				validate: {
-					notNull: { msg: 'Author Id is required' },
-					notEmpty: { msg: 'Author Id is required' },
-				},
-			},
+			authorId: DataTypes.INTEGER,
 		},
 		{
 			sequelize,

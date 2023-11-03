@@ -31,7 +31,7 @@ const updateDeletePostAuthorization = async (req, res, next) => {
 		if (!post) {
 			throw {
 				name: 'NotFound',
-				message: `Post with id ${postId} is not found`,
+				message: `Post with id ${postId} not found`,
 			};
 		}
 
