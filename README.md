@@ -29,6 +29,10 @@ List of available endpoints:
 
 ## 1. POST /add-user
 
+Description:
+
+- add new author staff
+
 Request:
 
 - headers:
@@ -95,6 +99,10 @@ _Response (401 - Unauthorized)_
 &nbsp;
 
 ## 2. POST /login
+
+Description:
+
+- login
 
 Request:
 

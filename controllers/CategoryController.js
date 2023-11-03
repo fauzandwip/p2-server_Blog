@@ -42,25 +42,4 @@ module.exports = class CategoryController {
 			next(error);
 		}
 	}
-
-	static async destroyCategory(req, res, next) {
-		try {
-			const { id } = req.params;
-			const category = await Category.findByPk(id);
-
-			if (!category) {
-				throw {
-					name: 'NotFound',
-					message: `Category with id ${id} not found`,
-				};
-			}
-
-			await category.destroy();
-			res.status(200).json({
-				message: `Category success to delete`,
-			});
-		} catch (error) {
-			next(error);
-		}
-	}
 };
