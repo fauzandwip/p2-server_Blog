@@ -176,6 +176,10 @@ _Response (200 - OK)_
     "authorId": 6,
     "createdAt": "2023-01-03T01:18:04.000Z",
     "updatedAt": "2023-08-02T21:29:13.000Z",
+    "Category": {
+      "id": 1,
+      "name": "Sport"
+    },
     "Author": {
         "id": 6,
         "username": "staf2",
@@ -196,6 +200,10 @@ _Response (200 - OK)_
     "authorId": 8,
     "createdAt": "2022-11-29T10:08:11.000Z",
     "updatedAt": "2023-08-20T08:31:10.000Z",
+    "Category": {
+      "id": 2,
+      "name": "Fiction"
+    },
     "Author": {
         "id": 8,
         "username": "staf4",
@@ -343,7 +351,21 @@ _Response (200 - OK)_
 	"categoryId": 1,
 	"authorId": 6,
 	"createdAt": "2023-01-03T01:18:04.000Z",
-	"updatedAt": "2023-08-02T21:29:13.000Z"
+	"updatedAt": "2023-08-02T21:29:13.000Z",
+	"Category": {
+		"id": 1,
+		"name": "Sport"
+	},
+	"Author": {
+		"id": 6,
+		"username": "staf2",
+		"email": "staff2@gmail.com",
+		"role": "staff",
+		"phoneNumber": "089123456789",
+		"address": "Tortuga, Switzerland",
+		"createdAt": "2023-11-02T13:46:04.116Z",
+		"updatedAt": "2023-11-02T13:46:04.116Z"
+	}
 }
 ```
 
@@ -742,6 +764,10 @@ _Response (200 - OK)_
 			"authorId": 6,
 			"createdAt": "2023-01-03T01:18:04.000Z",
 			"updatedAt": "2023-08-02T21:29:13.000Z",
+			"Category": {
+				"id": 1,
+				"name": "Sport"
+			},
 			"Author": {
 				"id": 6,
 				"username": "staf2",
@@ -761,7 +787,11 @@ _Response (200 - OK)_
 			"categoryId": 2,
 			"authorId": 8,
 			"createdAt": "2022-11-29T10:08:11.000Z",
-			"updatedAt": "2023-08-20T08:31:10.000Z",
+			"updatedAt": "2023-11-03T07:26:48.267Z",
+			"Category": {
+				"id": 2,
+				"name": "Fiction"
+			},
 			"Author": {
 				"id": 8,
 				"username": "staf4",
@@ -807,7 +837,21 @@ _Response (200 - OK)_
 	"categoryId": 1,
 	"authorId": 6,
 	"createdAt": "2023-01-03T01:18:04.000Z",
-	"updatedAt": "2023-08-02T21:29:13.000Z"
+	"updatedAt": "2023-08-02T21:29:13.000Z",
+	"Category": {
+		"id": 1,
+		"name": "Sport"
+	},
+	"Author": {
+		"id": 6,
+		"username": "staf2",
+		"email": "staff2@gmail.com",
+		"role": "staff",
+		"phoneNumber": "089123456789",
+		"address": "Tortuga, Switzerland",
+		"createdAt": "2023-11-02T13:46:04.116Z",
+		"updatedAt": "2023-11-02T13:46:04.116Z"
+	}
 }
 ```
 
