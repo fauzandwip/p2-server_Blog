@@ -60,6 +60,10 @@ describe('Get all public posts', () => {
 		expect(body.data[0]).toHaveProperty('createdAt', expect.any(String));
 		expect(body.data[0]).toHaveProperty('updatedAt', expect.any(String));
 		expect(body.data[0]).toHaveProperty('Author', expect.any(Object));
+		// category
+		expect(body.data[0]).toHaveProperty('Category', expect.any(Object));
+		expect(body.data[0].Category).toHaveProperty('id', 1);
+		expect(body.data[0].Category).toHaveProperty('name', 'Sport');
 		// Author object data
 		const author = await Author.findByPk(posts[0].authorId);
 		expect(body.data[0].Author).not.toHaveProperty('password');
@@ -80,7 +84,7 @@ describe('Get all public posts', () => {
 			'/pub/posts?filter[category]=1'
 		);
 
-		console.dir({ status, body }, { depth: null });
+		// console.dir({ status, body }, { depth: null });
 		// console.log({ status, body });
 		expect(status).toBe(200);
 		expect(body).toBeInstanceOf(Object);
@@ -102,6 +106,10 @@ describe('Get all public posts', () => {
 		expect(body.data[0]).toHaveProperty('createdAt', expect.any(String));
 		expect(body.data[0]).toHaveProperty('updatedAt', expect.any(String));
 		expect(body.data[0]).toHaveProperty('Author', expect.any(Object));
+		// category
+		expect(body.data[0]).toHaveProperty('Category', expect.any(Object));
+		expect(body.data[0].Category).toHaveProperty('id', 1);
+		expect(body.data[0].Category).toHaveProperty('name', 'Sport');
 		// Author object data
 		const author = await Author.findByPk(posts[0].authorId);
 		expect(body.data[0].Author).not.toHaveProperty('password');

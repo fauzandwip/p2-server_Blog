@@ -42,6 +42,21 @@ describe('Get detail public post by id', () => {
 		expect(body).toHaveProperty('authorId', post.authorId);
 		expect(body).toHaveProperty('createdAt', expect.any(String));
 		expect(body).toHaveProperty('updatedAt', expect.any(String));
+		// category
+		expect(body).toHaveProperty('Category', expect.any(Object));
+		expect(body.Category).toHaveProperty('id', 1);
+		expect(body.Category).toHaveProperty('name', 'Sport');
+		// author
+		expect(body).toHaveProperty('Author', expect.any(Object));
+		expect(body.Author).not.toHaveProperty('password');
+		expect(body.Author).toHaveProperty('id', 1);
+		expect(body.Author).toHaveProperty('username');
+		expect(body.Author).toHaveProperty('email', authorStaff.email);
+		expect(body.Author).toHaveProperty('role', 'staff');
+		expect(body.Author).toHaveProperty('phoneNumber');
+		expect(body.Author).toHaveProperty('address');
+		expect(body.Author).toHaveProperty('createdAt', expect.any(String));
+		expect(body.Author).toHaveProperty('updatedAt', expect.any(String));
 	});
 	it('should error while post id not found (404)', async () => {
 		const { status, body } = await request(app).get(`/pub/posts/${3}`);

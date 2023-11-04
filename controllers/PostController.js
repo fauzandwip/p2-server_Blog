@@ -21,6 +21,7 @@ module.exports = class PostController {
 						},
 					},
 				],
+				order: [['id', 'ASC']],
 			});
 			res.status(200).json(posts);
 		} catch (error) {
@@ -33,12 +34,18 @@ module.exports = class PostController {
 			let { search, sort, filter, page, limit } = req.query;
 			const queryOption = {
 				where: {},
-				include: {
-					model: Author,
-					attributes: {
-						exclude: ['password'],
+				include: [
+					{
+						model: Category,
+						attributes: ['id', 'name'],
 					},
-				},
+					{
+						model: Author,
+						attributes: {
+							exclude: ['password'],
+						},
+					},
+				],
 			};
 
 			if (search) {
@@ -121,7 +128,7 @@ module.exports = class PostController {
 			if (!post) {
 				throw {
 					name: 'NotFound',
-					message: `Post with id ${id} is not found`,
+					message: `Post with id ${id} not found`,
 				};
 			}
 

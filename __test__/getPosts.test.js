@@ -69,6 +69,10 @@ describe('Get all posts', () => {
 		expect(body[0]).toHaveProperty('authorId', posts[0].authorId);
 		expect(body[0]).toHaveProperty('createdAt', dateNowString);
 		expect(body[0]).toHaveProperty('updatedAt', dateNowString);
+		// category
+		expect(body[0]).toHaveProperty('Category', expect.any(Object));
+		expect(body[0].Category).toHaveProperty('id', 1);
+		expect(body[0].Category).toHaveProperty('name', 'Sport');
 		// author
 		expect(body[0]).toHaveProperty('Author', expect.any(Object));
 		expect(body[0].Author).not.toHaveProperty('password');
