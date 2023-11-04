@@ -44,13 +44,11 @@ beforeAll(async () => {
 
 describe('Update image url post by id', () => {
 	it('should success update image url post by id (200)', async () => {
-		// console.log(imagePath);
 		const { status, body } = await request(app)
 			.patch(`/posts/${1}/img-url`)
 			.set('Authorization', `Bearer ${tokenAdmin}`)
 			.attach('imageUrl', imagePath);
 
-		// console.log({ status, body });
 		expect(status).toBe(200);
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('message', 'Image Post success to update');
@@ -58,7 +56,6 @@ describe('Update image url post by id', () => {
 	it('should error while author is not login (missing access_token) (401)', async () => {
 		const { status, body } = await request(app).patch(`/posts/${1}/img-url`);
 
-		// console.log(status, body);
 		expect(status).toBe(401);
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('message', 'Token must be provided');
@@ -68,7 +65,6 @@ describe('Update image url post by id', () => {
 			.patch(`/posts/${1}/img-url`)
 			.set('Authorization', `Bearer randomString`);
 
-		// console.log(status, body);
 		expect(status).toBe(401);
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('message', 'Invalid token');
@@ -78,7 +74,6 @@ describe('Update image url post by id', () => {
 			.patch(`/posts/${3}/img-url`)
 			.set('Authorization', `Bearer ${tokenAdmin}`);
 
-		// console.dir({ status, body });
 		expect(status).toBe(404);
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('message', 'Post with id 3 not found');
@@ -88,7 +83,6 @@ describe('Update image url post by id', () => {
 			.patch(`/posts/${1}/img-url`)
 			.set('Authorization', `Bearer ${tokenStaff}`);
 
-		// console.log({ status, body });
 		expect(status).toBe(403);
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('message', `You don't have permission`);
@@ -99,7 +93,6 @@ describe('Update image url post by id', () => {
 			.set('Authorization', `Bearer ${tokenAdmin}`)
 			.attach('imageUrl', '');
 
-		// console.log({ status, body });
 		expect(status).toBe(400);
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('message', 'Image file is required');

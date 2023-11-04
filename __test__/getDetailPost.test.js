@@ -36,7 +36,6 @@ describe('Get detail post by id', () => {
 			.get(`/posts/${1}`)
 			.set('Authorization', `Bearer ${token}`);
 
-		// console.dir({ status, body }, { depth: null });
 		expect(status).toBe(200);
 		expect(body).toBeInstanceOf(Object);
 		// all property
@@ -67,7 +66,6 @@ describe('Get detail post by id', () => {
 	it('should error while author is not login (missing access_token) (401)', async () => {
 		const { status, body } = await request(app).get(`/posts/${1}`);
 
-		// console.log(status, body);
 		expect(status).toBe(401);
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('message', 'Token must be provided');
@@ -77,7 +75,6 @@ describe('Get detail post by id', () => {
 			.get(`/posts/${1}`)
 			.set('Authorization', `Bearer randomString`);
 
-		// console.log(status, body);
 		expect(status).toBe(401);
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('message', 'Invalid token');
@@ -87,7 +84,6 @@ describe('Get detail post by id', () => {
 			.get(`/posts/${3}`)
 			.set('Authorization', `Bearer ${token}`);
 
-		// console.dir({ status, body });
 		expect(status).toBe(404);
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('message', 'Post with id 3 not found');

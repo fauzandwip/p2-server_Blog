@@ -52,7 +52,6 @@ describe('Update post by id', () => {
 			.set('Authorization', `Bearer ${tokenAdmin}`)
 			.send(newPost);
 
-		// console.dir({ status, body }, { depth: null });
 		expect(status).toBe(200);
 		expect(body).toBeInstanceOf(Object);
 		// * all property
@@ -68,7 +67,6 @@ describe('Update post by id', () => {
 	it('should error while author is not login (missing access_token) (401)', async () => {
 		const { status, body } = await request(app).put(`/posts/${1}`);
 
-		// console.log(status, body);
 		expect(status).toBe(401);
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('message', 'Token must be provided');
@@ -78,7 +76,6 @@ describe('Update post by id', () => {
 			.put(`/posts/${1}`)
 			.set('Authorization', `Bearer randomString`);
 
-		// console.log(status, body);
 		expect(status).toBe(401);
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('message', 'Invalid token');
@@ -88,7 +85,6 @@ describe('Update post by id', () => {
 			.put(`/posts/${3}`)
 			.set('Authorization', `Bearer ${tokenAdmin}`);
 
-		// console.dir({ status, body });
 		expect(status).toBe(404);
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('message', 'Post with id 3 not found');
@@ -99,7 +95,6 @@ describe('Update post by id', () => {
 			.set('Authorization', `Bearer ${tokenStaff}`)
 			.send(newPost);
 
-		// console.dir({ status, body }, { depth: null });
 		expect(status).toBe(403);
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('message', `You don't have permission`);
@@ -114,7 +109,6 @@ describe('Update post by id', () => {
 				categoryId: null,
 			});
 
-		// console.log({ status, body });
 		expect(status).toBe(400);
 		expect(body).toBeInstanceOf(Object);
 		expect(body.messages).toBeInstanceOf(Array);

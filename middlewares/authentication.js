@@ -32,7 +32,6 @@ const authentication = async (req, res, next) => {
 			role: author.role,
 		};
 
-		// console.log(req.author);
 		next();
 	} catch (error) {
 		next(error);

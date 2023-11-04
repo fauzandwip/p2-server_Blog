@@ -5,7 +5,6 @@ const { Post } = require('../models');
 const guardAdminOnly = (req, res, next) => {
 	try {
 		const { author } = req;
-		// console.log(author);
 
 		if (author.role !== 'admin') {
 			throw {

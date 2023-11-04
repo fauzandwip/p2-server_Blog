@@ -76,10 +76,6 @@ OR
 }
 OR
 {
-  "message": "Email already exists"
-}
-OR
-{
   "message": "Password is required"
 }
 OR
@@ -88,11 +84,19 @@ OR
 }
 ```
 
-_Response (401 - Unauthorized)_
+_Response (403 - Forbidden)_
 
 ```json
 {
 	"message": "You are not authorized, ADMIN ONLY"
+}
+```
+
+_Response (409 - Conflict)_
+
+```json
+{
+	"message": "Email already exists"
 }
 ```
 
@@ -445,7 +449,7 @@ OR
 }
 ```
 
-_Response (401 - Unauthorized)_
+_Response (403 - Forbidden)_
 
 ```json
 {
@@ -495,7 +499,7 @@ _Response (200 - OK)_
 }
 ```
 
-_Response (401 - Unauthorized)_
+_Response (403 - Forbidden)_
 
 ```json
 {

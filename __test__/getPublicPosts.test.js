@@ -39,8 +39,6 @@ describe('Get all public posts', () => {
 	it('should success get all public posts (200)', async () => {
 		const { status, body } = await request(app).get('/pub/posts');
 
-		// console.dir({ status, body }, { depth: null });
-		// console.log({ status, body });
 		expect(status).toBe(200);
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('total', posts.length);
@@ -84,8 +82,6 @@ describe('Get all public posts', () => {
 			'/pub/posts?filter[category]=1'
 		);
 
-		// console.dir({ status, body }, { depth: null });
-		// console.log({ status, body });
 		expect(status).toBe(200);
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('total', 11);
@@ -130,8 +126,6 @@ describe('Get all public posts', () => {
 			'/pub/posts?page[number]=3'
 		);
 
-		// console.dir({ status, body }, { depth: null });
-		// console.log({ status, body });
 		expect(status).toBe(200);
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('total', posts.length);

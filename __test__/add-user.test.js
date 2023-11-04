@@ -104,7 +104,6 @@ describe('Add author staff', () => {
 			.set('Authorization', `Bearer ${token}`)
 			.send(authorStaff2);
 
-		// console.log(body);
 		expect(status).toBe(409);
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('message', 'Email already exists');

@@ -46,7 +46,6 @@ beforeEach(async () => {
 		});
 
 		const newPost = await Post.create(post);
-		// console.log(newPost.id);
 	} catch (error) {
 		console.log(error);
 	}
@@ -58,7 +57,6 @@ describe('Delete post by id', () => {
 			.delete(`/posts/${1}`)
 			.set('Authorization', `Bearer ${tokenAdmin}`);
 
-		// console.log({ status, body });
 		expect(status).toBe(200);
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('message', 'Post success to delete');
@@ -66,7 +64,6 @@ describe('Delete post by id', () => {
 	it('should error while author is not login (missing access_token) (401)', async () => {
 		const { status, body } = await request(app).delete(`/posts/${1}`);
 
-		// console.log(status, body);
 		expect(status).toBe(401);
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('message', 'Token must be provided');
@@ -76,7 +73,6 @@ describe('Delete post by id', () => {
 			.delete(`/posts/${1}`)
 			.set('Authorization', `Bearer randomString`);
 
-		// console.log(status, body);
 		expect(status).toBe(401);
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('message', 'Invalid token');
@@ -86,7 +82,6 @@ describe('Delete post by id', () => {
 			.delete(`/posts/${3}`)
 			.set('Authorization', `Bearer ${tokenAdmin}`);
 
-		// console.log({ status, body });
 		expect(status).toBe(404);
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('message', 'Post with id 3 not found');
@@ -96,7 +91,6 @@ describe('Delete post by id', () => {
 			.delete(`/posts/${1}`)
 			.set('Authorization', `Bearer ${tokenStaff}`);
 
-		// console.log({ status, body });
 		expect(status).toBe(403);
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('message', `You don't have permission`);

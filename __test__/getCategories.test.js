@@ -51,7 +51,6 @@ describe('Get all categories', () => {
 			.get(`/categories`)
 			.set('Authorization', `Bearer ${token}`);
 
-		// console.dir({ status, body });
 		expect(status).toBe(200);
 		expect(body).toBeInstanceOf(Array);
 		expect(body).toHaveLength(categories.length);
@@ -66,7 +65,6 @@ describe('Get all categories', () => {
 	it('should error while author is not login (missing access_token) (401)', async () => {
 		const { status, body } = await request(app).get(`/categories`);
 
-		// console.log(status, body);
 		expect(status).toBe(401);
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('message', 'Token must be provided');
@@ -76,7 +74,6 @@ describe('Get all categories', () => {
 			.get(`/categories`)
 			.set('Authorization', `Bearer randomString`);
 
-		// console.log(status, body);
 		expect(status).toBe(401);
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('message', 'Invalid token');

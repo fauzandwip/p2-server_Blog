@@ -30,7 +30,6 @@ describe('Get detail public post by id', () => {
 	it('should success get detail public post by id (200)', async () => {
 		const { status, body } = await request(app).get(`/pub/posts/${1}`);
 
-		// console.dir({ status, body });
 		expect(status).toBe(200);
 		expect(body).toBeInstanceOf(Object);
 		// all property
@@ -61,7 +60,6 @@ describe('Get detail public post by id', () => {
 	it('should error while post id not found (404)', async () => {
 		const { status, body } = await request(app).get(`/pub/posts/${3}`);
 
-		// console.dir({ status, body });
 		expect(status).toBe(404);
 		expect(body).toBeInstanceOf(Object);
 		expect(body).toHaveProperty('message', 'Post with id 3 not found');
