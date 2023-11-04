@@ -1,6 +1,6 @@
 'use strict';
 
-const { Post, Author } = require('../models');
+const { Post, Author, Category } = require('../models');
 const { randomUUID } = require('crypto');
 const cloudinary = require('../helpers/cloudinary');
 const { Op } = require('sequelize');
@@ -9,12 +9,18 @@ module.exports = class PostController {
 	static async getPosts(req, res, next) {
 		try {
 			const posts = await Post.findAll({
-				include: {
-					model: Author,
-					attributes: {
-						exclude: ['password'],
+				include: [
+					{
+						model: Category,
+						attributes: ['id', 'name'],
 					},
-				},
+					{
+						model: Author,
+						attributes: {
+							exclude: ['password'],
+						},
+					},
+				],
 			});
 			res.status(200).json(posts);
 		} catch (error) {
@@ -97,7 +103,20 @@ module.exports = class PostController {
 	static async getPost(req, res, next) {
 		try {
 			const { id } = req.params;
-			const post = await Post.findByPk(id);
+			const post = await Post.findByPk(id, {
+				include: [
+					{
+						model: Category,
+						attributes: ['id', 'name'],
+					},
+					{
+						model: Author,
+						attributes: {
+							exclude: ['password'],
+						},
+					},
+				],
+			});
 
 			if (!post) {
 				throw {
