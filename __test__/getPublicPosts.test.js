@@ -126,7 +126,9 @@ describe('Get all public posts', () => {
 		expect(body.data[0].Author).toHaveProperty('updatedAt', expect.any(String));
 	});
 	it('should success get all public posts with pagination (200)', async () => {
-		const { status, body } = await request(app).get('/pub/posts?page=3');
+		const { status, body } = await request(app).get(
+			'/pub/posts?page[number]=3'
+		);
 
 		// console.dir({ status, body }, { depth: null });
 		// console.log({ status, body });

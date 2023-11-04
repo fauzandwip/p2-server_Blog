@@ -31,7 +31,9 @@ module.exports = class PostController {
 
 	static async getPublicPosts(req, res, next) {
 		try {
-			let { search, sort, filter, page, limit } = req.query;
+			let { search, sort, filter, page } = req.query;
+			let pageNumber = 1;
+			let limit = 10;
 			const queryOption = {
 				where: {},
 				include: [
@@ -69,19 +71,27 @@ module.exports = class PostController {
 				};
 			}
 
-			if (!Number(page)) page = 1;
-			if (!Number(limit)) limit = 10;
+			if (page) {
+				if (page.size) {
+					limit = page.size;
+				}
+
+				if (page.number) {
+					pageNumber = page.number;
+				}
+			}
 
 			queryOption.limit = limit;
-			queryOption.offset = (page - 1) * limit;
+			queryOption.offset = (pageNumber - 1) * limit;
 
+			// console.log(queryOption);
 			const { count, rows } = await Post.findAndCountAll(queryOption);
 
 			res.status(200).json({
 				total: count,
 				size: +limit,
 				totalPage: Math.ceil(count / limit),
-				currentPage: +page,
+				currentPage: +pageNumber,
 				data: rows,
 			});
 		} catch (error) {
