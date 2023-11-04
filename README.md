@@ -610,7 +610,8 @@ _Response (200 - OK)_
 		"name": "Fiction",
 		"createdAt": "2023-11-02T13:46:04.260Z",
 		"updatedAt": "2023-11-02T13:46:04.260Z"
-	}
+	},
+  ...,
 ]
 ```
 
@@ -740,8 +741,8 @@ Request:
 		"category": "string"
 	},
 	"page": {
-		"size": "integer",
-		"number": "integer"
+		"size": "string",
+		"number": "string"
 	}
 }
 ```
@@ -750,35 +751,11 @@ _Response (200 - OK)_
 
 ```json
 {
-	"total": 25,
+	"total": 26,
 	"size": 5,
-	"totalPage": 5,
-	"currentPage": 1,
+	"totalPage": 6,
+	"currentPage": 6,
 	"data": [
-		{
-			"id": 1,
-			"title": "Fight, Zatoichi, Fight (Zatôichi kesshô-tabi) (Zatôichi 8)",
-			"content": "Beam Radiation of Spleen using Heavy Particles (Protons,Ions)",
-			"imgUrl": "http://dummyimage.com/291x272.png/dddddd/000000",
-			"categoryId": 1,
-			"authorId": 6,
-			"createdAt": "2023-01-03T01:18:04.000Z",
-			"updatedAt": "2023-08-02T21:29:13.000Z",
-			"Category": {
-				"id": 1,
-				"name": "Sport"
-			},
-			"Author": {
-				"id": 6,
-				"username": "staf2",
-				"email": "staff2@gmail.com",
-				"role": "staff",
-				"phoneNumber": "089123456789",
-				"address": "Tortuga, Switzerland",
-				"createdAt": "2023-11-02T13:46:04.116Z",
-				"updatedAt": "2023-11-02T13:46:04.116Z"
-			}
-		},
 		{
 			"id": 2,
 			"title": "Jacob the Liar (Jakob, der Lügner)",
@@ -802,8 +779,7 @@ _Response (200 - OK)_
 				"createdAt": "2023-11-02T13:46:04.252Z",
 				"updatedAt": "2023-11-02T13:46:04.252Z"
 			}
-		},
-    ...,
+		}
 	]
 }
 ```
