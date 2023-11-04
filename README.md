@@ -7,7 +7,6 @@
 ## URL:
 
 - https://blog.fauzandp.online (pending deployment certificates, need time)
-- https://server-p2.hacktiv8.fauzandp.online (pending deployment certificates, need time)
 
 ## Endpoints :
 
