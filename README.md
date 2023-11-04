@@ -6,6 +6,10 @@
 
 ## URL:
 
+- http://13.212.149.136
+
+#### secure
+
 - https://blog.fauzandp.online (pending deployment certificates, need time)
 
 ## Endpoints :
