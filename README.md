@@ -259,15 +259,50 @@ _Response (400 - Bad Request)_
 
 ```json
 {
-  "message": "Title is required"
+  "messages": [
+    "Title is required",
+    "Content is required",
+    "Category is required"
+  ]
 }
 OR
 {
-  "message": "Content is required"
+  "messages": [
+    "Title is required",
+  ]
 }
 OR
 {
-  "message": "Category is required"
+  "messages": [
+    "Content is required",
+  ]
+}
+OR
+{
+  "messages": [
+    "Category is required"
+  ]
+}
+OR
+{
+  "messages": [
+    "Title is required",
+    "Content is required",
+  ]
+}
+OR
+{
+  "messages": [
+    "Title is required",
+    "Category is required"
+  ]
+}
+OR
+{
+  "messages": [
+    "Content is required",
+    "Category is required"
+  ]
 }
 ```
 
@@ -388,19 +423,19 @@ OR
 }
 ```
 
-_Response (404 - Not Found)_
-
-```json
-{
-	"message": "Post with id 1 not found"
-}
-```
-
 _Response (401 - Unauthorized)_
 
 ```json
 {
 	"message": "You don't have permission"
+}
+```
+
+_Response (404 - Not Found)_
+
+```json
+{
+	"message": "Post with id 1 not found"
 }
 ```
 
@@ -438,19 +473,19 @@ _Response (200 - OK)_
 }
 ```
 
-_Response (404 - Not Found)_
-
-```json
-{
-	"message": "Post with id 1 not found"
-}
-```
-
 _Response (401 - Unauthorized)_
 
 ```json
 {
 	"message": "You don't have permission"
+}
+```
+
+_Response (404 - Not Found)_
+
+```json
+{
+	"message": "Post with id 1 not found"
 }
 ```
 
@@ -501,6 +536,14 @@ _Response (400 - Bad Request)_
 ```json
 {
 	"message": "Image file is required"
+}
+```
+
+_Response (401 - Unauthorized)_
+
+```json
+{
+	"message": "You don't have permission"
 }
 ```
 
