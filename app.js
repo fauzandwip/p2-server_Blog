@@ -5,6 +5,7 @@ if (process.env.NODE_DEV !== 'production') {
 }
 
 const express = require('express');
+const cors = require('cors');
 const errorHandler = require('./middlewares/errorHandler');
 const app = express();
 
