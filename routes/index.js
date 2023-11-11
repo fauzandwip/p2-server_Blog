@@ -11,7 +11,7 @@ router.post('/add-user', authentication, guardAdminOnly, AuthController.addAutho
 router.post('/login', AuthController.login);
 
 router.use('/posts', authentication, require('./posts'));
-router.use('/categories', authentication, require('./categories'));
+router.use('/categories', require('./categories'));
 router.use('/pub', require('./public'));
 
 module.exports = router;

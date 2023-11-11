@@ -10,7 +10,8 @@
 
 #### secure
 
-- https://blog.fauzandp.online (pending deployment certificates, need time)
+- https://blog.fauzandp.online
+- https://server-p2.fauzandp.online
 
 ## Endpoints :
 
